@@ -10,4 +10,4 @@ env/
 .gitattributes
 README.md
 *.zip
-*.sh
+.venv

@@ -227,7 +227,7 @@ class SetupPage(BasePage):
                 spec={
                     "__type__": "kotaemon.llms.ChatOpenAI",
                     "base_url": "http://localhost:11434/v1/",
-                    "model": "llama3.1:8b",
+                    "model": "llama3.2:3b",
                     "api_key": "ollama",
                 },
                 default=True,

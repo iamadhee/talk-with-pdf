@@ -130,7 +130,7 @@ if config("AZURE_OPENAI_API_KEY", default="") and config(
         }
 
 if config("OPENAI_API_KEY", default=""):
-    KH_LLMS["openai"] = {
+    KH_LLMS["llama"] = {
         "spec": {
             "__type__": "kotaemon.llms.ChatOpenAI",
             "temperature": 0,
@@ -142,26 +142,26 @@ if config("OPENAI_API_KEY", default=""):
         },
         "default": True,
     }
-    KH_EMBEDDINGS["openai"] = {
-        "spec": {
-            "__type__": "kotaemon.embeddings.OpenAIEmbeddings",
-            "base_url": config("OPENAI_API_BASE", default="https://api.openai.com/v1"),
-            "api_key": config("OPENAI_API_KEY", default=""),
-            "model": config(
-                "OPENAI_EMBEDDINGS_MODEL", default="text-embedding-ada-002"
-            ),
-            "timeout": 10,
-            "context_length": 8191,
-        },
-        "default": True,
-    }
+    # KH_EMBEDDINGS["openai"] = {
+    #     "spec": {
+    #         "__type__": "kotaemon.embeddings.OpenAIEmbeddings",
+    #         "base_url": config("OPENAI_API_BASE", default="https://api.openai.com/v1"),
+    #         "api_key": config("OPENAI_API_KEY", default=""),
+    #         "model": config(
+    #             "OPENAI_EMBEDDINGS_MODEL", default="text-embedding-ada-002"
+    #         ),
+    #         "timeout": 10,
+    #         "context_length": 8191,
+    #     },
+    #     "default": True,
+    # }
 
 if config("LOCAL_MODEL", default=""):
     KH_LLMS["ollama"] = {
         "spec": {
             "__type__": "kotaemon.llms.ChatOpenAI",
             "base_url": "http://localhost:11434/v1/",
-            "model": config("LOCAL_MODEL", default="llama3.1:8b"),
+            "model": config("LOCAL_MODEL", default="llama3.2:3b"),
             "api_key": "ollama",
         },
         "default": False,
@@ -185,39 +185,39 @@ if config("LOCAL_MODEL", default=""):
     }
 
 # additional LLM configurations
-KH_LLMS["claude"] = {
-    "spec": {
-        "__type__": "kotaemon.llms.chats.LCAnthropicChat",
-        "model_name": "claude-3-5-sonnet-20240620",
-        "api_key": "your-key",
-    },
-    "default": False,
-}
-KH_LLMS["gemini"] = {
-    "spec": {
-        "__type__": "kotaemon.llms.chats.LCGeminiChat",
-        "model_name": "gemini-1.5-pro",
-        "api_key": "your-key",
-    },
-    "default": False,
-}
-KH_LLMS["groq"] = {
-    "spec": {
-        "__type__": "kotaemon.llms.ChatOpenAI",
-        "base_url": "https://api.groq.com/openai/v1",
-        "model": "llama-3.1-8b-instant",
-        "api_key": "your-key",
-    },
-    "default": False,
-}
-KH_LLMS["cohere"] = {
-    "spec": {
-        "__type__": "kotaemon.llms.chats.LCCohereChat",
-        "model_name": "command-r-plus-08-2024",
-        "api_key": config("COHERE_API_KEY", default="your-key"),
-    },
-    "default": False,
-}
+# KH_LLMS["claude"] = {
+#     "spec": {
+#         "__type__": "kotaemon.llms.chats.LCAnthropicChat",
+#         "model_name": "claude-3-5-sonnet-20240620",
+#         "api_key": "your-key",
+#     },
+#     "default": False,
+# }
+# KH_LLMS["gemini"] = {
+#     "spec": {
+#         "__type__": "kotaemon.llms.chats.LCGeminiChat",
+#         "model_name": "gemini-1.5-pro",
+#         "api_key": "your-key",
+#     },
+#     "default": False,
+# }
+# KH_LLMS["groq"] = {
+#     "spec": {
+#         "__type__": "kotaemon.llms.ChatOpenAI",
+#         "base_url": "https://api.groq.com/openai/v1",
+#         "model": "llama-3.1-8b-instant",
+#         "api_key": "your-key",
+#     },
+#     "default": False,
+# }
+# KH_LLMS["cohere"] = {
+#     "spec": {
+#         "__type__": "kotaemon.llms.chats.LCCohereChat",
+#         "model_name": "command-r-plus-08-2024",
+#         "api_key": config("COHERE_API_KEY", default="your-key"),
+#     },
+#     "default": False,
+# }
 
 # additional embeddings configurations
 KH_EMBEDDINGS["cohere"] = {
