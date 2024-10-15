@@ -13,7 +13,7 @@ this_file = getframeinfo(cur_frame).filename
 this_dir = Path(this_file).parent
 
 # change this if your app use a different name
-KH_PACKAGE_NAME = "kotaemon_app"
+KH_PACKAGE_NAME = "chatwithdoc_app"
 
 KH_APP_VERSION = config("KH_APP_VERSION", None)
 if not KH_APP_VERSION:
